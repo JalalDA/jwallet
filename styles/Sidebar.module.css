@@ -1,0 +1,38 @@
+.sidebarContainer{
+    display: flex;
+    background-image: url('../src/assets/img/sidebar.png');
+    background-size: cover;
+    width: 50%;
+    flex-direction: column;
+}
+.sidebarTittle{
+    padding: 50px 150px;
+    font-weight: 700;
+    font-size: 29px;
+    color: white;
+}
+.sideImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.sideDescription{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.sideDescription >span{
+    width: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+.sideDescription > p{
+    width: 50%;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+}

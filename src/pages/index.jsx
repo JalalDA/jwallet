@@ -1,21 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import call from '../src/assets/img/call.png'
-import lock from '../src/assets/img/lock.png'
-import dIcon from '../src/assets/img/downloadIcon.png'
-import group from '../src/assets/img/grup2.png'
-
+import styles from '../../styles/Home.module.css'
+import call from '../../src/assets/img/call.png'
+import lock from '../../src/assets/img/lock.png'
+import dIcon from '../../src/assets/img/downloadIcon.png'
+import group from '../../src/assets/img/grup2.png'
+import {useRouter} from 'next/router' 
 
 export default function Home() {
+  const router = useRouter()
   return (
     <>
       <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.logo}>FazzPay</div>
         <div className={styles.auth}>
-          <div className={styles.login}>LOGIN</div>
-          <div className={styles.signup}>SIGN UP</div>
+          <div className={styles.login} onClick={()=>{
+            router.push('/auth', 'auth/login')
+          }}>LOGIN</div>
+          <div className={styles.signup} onClick={()=>{
+            router.push('/auth', 'auth/signup')
+          }}>SIGN UP</div>
         </div>
       </div>
       <div className={styles.hero}>

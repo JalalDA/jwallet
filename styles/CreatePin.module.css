@@ -1,0 +1,80 @@
+.createPinContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.createPinContainer > span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3A3D42;
+    font-weight: 700;
+    font-size: 24px;
+    width: 50%;
+    padding-left: 50px;
+}
+.createPinContainer > p{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(58, 61, 66, 0.6);
+    font-weight: 400;
+    font-size: 16px;
+    width: 50%;
+    padding-left: 50px;
+}
+.inputpin{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 90px;
+}
+.singleInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(169, 169, 169, 0.6);
+    box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+    width: 53px;
+    height: 65px;
+}
+.inputpin > input{
+    height: 65px;
+    width: 53px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+    border: 1px solid rgba(169, 169, 169, 0.6);
+}
+.inputpin > input:focus{
+    outline: 1px solid #6379F4 ;
+}
+.singleInput > input{
+    width: 20px;
+    height: 20px;
+    border: none;
+    font-size: 1.3rem;
+}
+.singleInput>input:focus{
+    outline: none;
+}
+
+.confimButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 183px;
+    background-color: #DADADA;
+    color: #88888F;;
+    font-size: 24px;
+    font-weight: 700;
+    width: 80%;
+    margin-left: 80px;
+    border-radius: 12px;
+}

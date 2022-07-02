@@ -1,0 +1,86 @@
+.signUpContainer{
+    padding: 100px;
+    width: 50%;
+}
+.signUpTittle{
+    font-weight: 700;
+    font-size: 24px;
+    color: #3a3d42;
+    width: 70%;
+}
+
+.signUpDesc{
+    font-weight: 400;
+    font-size: 16px;
+    color:rgba(58, 61, 66, 0.6);
+    width: 70%;
+}
+.signUpForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.signUpForm > span{
+    font-size: 16px;
+    font-weight: 700;
+    color: #88888F;
+    text-align: right;
+    cursor: pointer;
+}
+.signUpForm > span:hover{
+    color: #3a3d42;
+}
+.signUpInput{
+    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+    display: flex;
+    align-items: center;
+}
+.signUpInput > input{
+    border: none;
+    height: 50px;
+    width: 100%;
+    margin-left: 20px;
+}.signUpInput > input:focus{
+    outline: none;
+}
+.signUpButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 183px;
+    background-color: #DADADA;
+    border-radius: 12px;
+    color: #88888F;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.signUpButtonAct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 183px;
+    background-color: #6379F4;
+    border-radius: 12px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.signUpButton:hover{
+    color: #3a3d42;
+    background-color: #a5a0a0;
+}
+.loginRoute{
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(58, 61, 66, 0.8);
+    text-align: center;
+    margin-top: 40px;
+}
+.loginRoute > b{
+    color: #6379F4;
+    cursor: pointer;
+}
