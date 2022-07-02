@@ -71,10 +71,29 @@
     justify-content: center;
     padding: 16px 183px;
     background-color: #DADADA;
-    color: #88888F;;
+    color: #88888F;
     font-size: 24px;
     font-weight: 700;
     width: 80%;
     margin-left: 80px;
     border-radius: 12px;
+}
+
+.confimButtonAct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 183px;
+    background-color:#6379F4;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+    width: 80%;
+    margin-left: 80px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.confimButtonAct:hover{
+    background-color: #92a0ec;
+    
 }

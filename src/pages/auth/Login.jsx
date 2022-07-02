@@ -20,6 +20,7 @@ const Login = (props) => {
   const router = useRouter()
   const msg = useSelector(state=>state.login.msg)
   const pin = useSelector(state=>state.login.pin)
+  const isSucces = useSelector(state=>state.login.isSucces)
   const dispatch = useDispatch()
   const login = ()=>{
       const body = {
@@ -28,17 +29,19 @@ const Login = (props) => {
       }
       dispatch(loginAction(body))
       setShow(true)
-      if(pin){
-        router.push('/')
-      }else{
-        props.setPage('createPin')
-        router.push('/auth', 'auth/create-pin')
-      }
   }
   return (
     <>
     <Modal show={show} onClose={()=>{
       setShow(false)
+      if(isSucces){
+        if(pin){
+          router.push('/home')
+        }else{
+          props.setPage('createPin')
+          router.push('/auth', 'auth/create-pin')
+        }
+      }
     }} response={msg}/>
         <div className={styles.signUpContainer}>
             <p className={styles.signUpTittle}>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</p>

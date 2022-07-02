@@ -1,5 +1,8 @@
 import styles from '../../../styles/CreatePin.module.css'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { updatePin } from '../../api/api'
+
 const CreatePin = () => {
   const inputPin = useRef()
   const secPin = useRef()
@@ -7,7 +10,22 @@ const CreatePin = () => {
   const fourthPin = useRef()
   const fivethPin = useRef()
   const sixthPin = useRef()
-
+  const [btn, setBtn] = useState(false)
+  const [pin, setPin] = useState('')
+  const id = useSelector(state=>state.login.userInfo.id)
+  const token = useSelector(state=>state.login.userInfo.token)
+  const createPin = ()=>{
+    const body = {
+      pin
+    }
+    updatePin(id, body, token)
+    .then(result=>{
+      console.log(token)
+      alert(result.data.msg)
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
   useEffect(()=>{
     inputPin.current.focus()
   },[])
@@ -20,30 +38,43 @@ const CreatePin = () => {
             if(e){
               secPin.current.focus()
             }
-          }} />
+          }} onChange={e=>{
+            setPin(prev=>prev+=e.target.value)
+          }}/>
           <input ref={secPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
             if(e){
               thirdPin.current.focus()
             }
-          }} />
+          }} onChange={e=>{
+            setPin(prev=>prev+=e.target.value)
+          }}/>
           <input ref={thirdPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
             if(e){
               fourthPin.current.focus()
             }
-          }}  />
+          }} onChange={e=>{
+            setPin(prev=>prev+=e.target.value)
+          }} />
           <input ref={fourthPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
             if(e){
               fivethPin.current.focus()
             }
+          }}onChange={e=>{
+            setPin(prev=>prev+=e.target.value)
           }} />
           <input ref={fivethPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
             if(e){
               sixthPin.current.focus()
             }
-          }}  />
-          <input ref={sixthPin} type="text" id='first' maxLength={1} />
+          }} onChange={e=>{
+            setPin(prev=>prev+=e.target.value)
+          }} />
+          <input ref={sixthPin} type="text" id='first' maxLength={1} onChange={e=>{
+            setPin(prev=>prev+=e.target.value)
+            setBtn(true)
+          }}/>
       </div>
-      <div className={styles.confimButton}>Confirm</div>
+      <div className={btn ? styles.confimButtonAct : styles.confimButton} onClick={createPin}>Confirm</div>
     </div>
   )
 }
