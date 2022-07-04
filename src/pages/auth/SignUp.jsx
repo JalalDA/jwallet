@@ -11,6 +11,7 @@ import axios from 'axios';
 import {useRouter} from 'next/router'
 import Modal from '../../components/Modal';
 
+
 const SignUp = (props) => {
   const [showPass, setShowPass] = useState(false)
   const [firstName, setFirstName] = useState('')
@@ -21,9 +22,11 @@ const SignUp = (props) => {
   const [show, setShow] = useState(false)
   const [btn, setBtn] = useState(false)
   const router = useRouter()
+  const {setIsLoading} = props
 
   const register = async ()=>{
     try {
+      setIsLoading(true)
       const body = {
         firstName,
         lastName,
@@ -35,20 +38,17 @@ const SignUp = (props) => {
         setShow(true)
       }
       setMsg(result.data.msg)
-
+      setIsLoading(false)
     } catch (error) {
       console.log(error);
       setShow(true)
       setMsg(error.response.data.msg)
+      setIsLoading(false)
     }
   }
   return (
-    <>
+    <>   
     <Modal show={show} response={msg} onClose={()=>{
-      if(show){
-        props.setPage('login')
-        router.push('/auth', 'auth/login')
-      }
       setShow(false)
     }}/>
         <div className={styles.signUpContainer}>

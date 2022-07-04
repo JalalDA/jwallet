@@ -4,8 +4,10 @@ import Image from "next/image"
 import marry from '../../assets/img/1.png'
 import notes from '../../assets/img/notes.png'
 import arrowLeft from '../../assets/img/arrow-left.png'
+import { useRouter } from "next/router"
 
 const Profile = () => {
+    const router = useRouter()
   return (
     <Layout title={'Profile'}>
     <div className={styles.container}>
@@ -18,7 +20,9 @@ const Profile = () => {
             <span>Marry Kitty</span>
             <span>08123421324</span>
         </div>
-        <div className={styles.profileNav}>
+        <div className={styles.profileNav} onClick={()=>{
+            router.push('profile/personal-info')
+        }}>
             Personal Information
             <Image src={arrowLeft} alt="go"/>
         </div>

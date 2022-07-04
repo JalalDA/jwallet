@@ -19,7 +19,7 @@ const Sidebar = () => {
     const id = useSelector(state=>state.login.userInfo.id)
     const token = useSelector(state=>state.login.userInfo.token)
     const dashboardInfo = useSelector(state=>state.dashboard.dashboardInfo)
-    const balence = useSelector(state=>state.user.userInfo.balence)
+    const userInfo = useSelector(state=>state.user.userInfo)
     const dispatch = useDispatch()
     useEffect( ()=>{
         dispatch(getUserAction(id, token))
@@ -32,7 +32,7 @@ const Sidebar = () => {
         <div className={styles.info}>
             <div className={styles.saldo}>
                 <span>Balance</span>
-                <span>{balence}</span>
+                <span>{userInfo.balance}</span>
                 <span>Phone</span>
             </div>
             <div className={styles.transaction}>

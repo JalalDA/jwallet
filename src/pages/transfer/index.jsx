@@ -45,7 +45,7 @@ const Transfer = () => {
             <input type="text" placeholder='Search receiver here' onChange={(e)=>{
                 setTimeout(()=>{
                     setSearch(e.target.value)
-                }, 2000)
+                }, 1000)
             }}/>
         </div>
         {user.map(user=>
@@ -54,7 +54,7 @@ const Transfer = () => {
             <div className={styles.userInfo} onClick={()=>{
                 router.push(`transfer/${user.id}`)
             }}>
-                <Image src={user.image ? user.image : blankProfile} alt="profile" width={100} height={100}/>
+                <Image src={user.image ? `${process.env.CLOUDINARY_URL}${user.image}` : blankProfile} alt="profile" width={100} height={100}/>
                 <div className={styles.user}>
                     <span>{user.firstName}</span>
                     <span>{user.phone}</span>

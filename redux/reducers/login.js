@@ -8,7 +8,6 @@ const initialState = {
 }
 
 const loginReducer = (state = initialState, action)=>{
-
     switch (action.type) {
         case loginStr + loginPending :
         return {...state, isLoading : true}
@@ -17,7 +16,7 @@ const loginReducer = (state = initialState, action)=>{
         case loginStr + loginReject :
         return {...state, isLoading : false, isSucces : false, msg : action.payload.response.data.msg}
         default:
-        return {...state}
+        return state
     }
 }
 

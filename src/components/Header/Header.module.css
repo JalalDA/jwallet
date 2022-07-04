@@ -19,3 +19,7 @@
     justify-content: space-between;
     width: 18%;
 }
+
+.imgProfile{
+    cursor: pointer;
+}

@@ -15,31 +15,43 @@ const Login = (props) => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
   const [show, setShow] = useState(false)
+  const [mdlBody, setMdlBody] = useState('')
 
   const router = useRouter()
   const msg = useSelector(state=>state.login.msg)
-  const pin = useSelector(state=>state.login.pin)
+  const userInfo = useSelector(state=>state.login.userInfo)
   const isSucces = useSelector(state=>state.login.isSucces)
+  const {setIsLoading, setPage} = props
   const dispatch = useDispatch()
   const login = ()=>{
       const body = {
         email,
         password : pass
       }
+      setIsLoading(true)
       dispatch(loginAction(body))
+      setIsLoading(false)
       setShow(true)
+      if(msg === "Wrong password"){
+        setMdlBody("Please input correct email and password")
+      }
+      if(msg ==="Account not active"){
+        setMdlBody("Please check your email to verify your account")
+      }
+
   }
   return (
     <>
     <Modal show={show} onClose={()=>{
-      setShow(false)
       if(isSucces){
-        if(!pin){
-          props.setPage('Create Pin')
+        if(!userInfo.pin){
+          setPage('Create Pin')
         }
-        router.push('/dashboard')
+        if(userInfo.pin){
+          router.push('/dashboard')
+        }
       }
-    }} response={msg}/>
+      setShow(false)}} response={msg} mdlBody={isSucces ? "Happy hacking" : mdlBody}/>
         <div className={styles.signUpContainer}>
             <p className={styles.signUpTittle}>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</p>
             <p className={styles.signUpDesc}>Transfering money is eassier than ever, you can access FazzPay wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</p>
