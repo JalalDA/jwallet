@@ -11,15 +11,18 @@ export default function Home() {
   const router = useRouter()
   return (
     <>
+    <Head>
+      <title>J Wallet</title>
+    </Head>
       <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.logo}>FazzPay</div>
         <div className={styles.auth}>
           <div className={styles.login} onClick={()=>{
-            router.push('/auth', 'auth/login')
+            router.push('/auth/login', 'auth/login')
           }}>LOGIN</div>
           <div className={styles.signup} onClick={()=>{
-            router.push('/auth', 'auth/signup')
+            router.push('/auth/signup', 'auth/signup')
           }}>SIGN UP</div>
         </div>
       </div>

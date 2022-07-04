@@ -8,6 +8,7 @@ import Sidebar from '../../../components/Sidebar/Sidebar'
 import {useRouter} from 'next/router'
 import { resetPass } from '../../../api/api'
 import Modal from '../../../components/Modal'
+import Head from 'next/head'
 
 
 const ResetPassword = () => {
@@ -35,6 +36,10 @@ const ResetPassword = () => {
     }
   }
   return (
+    <>
+    <Head>
+      <title>Reset Password</title>
+    </Head>
     <div className={styles.container}>
     <Modal show={show} response={msg} onClose={()=>{
         setShow(false)
@@ -69,6 +74,7 @@ const ResetPassword = () => {
       <div className={btn ? styles.confirmButtonAct : styles.confirmButton} onClick={reset} >Confirm</div>
     </div>
     </div>
+    </>
   )
 }
 

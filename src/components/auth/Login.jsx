@@ -21,14 +21,15 @@ const Login = (props) => {
   const msg = useSelector(state=>state.login.msg)
   const userInfo = useSelector(state=>state.login.userInfo)
   const isSucces = useSelector(state=>state.login.isSucces)
-  const {setIsLoading, setPage} = props
+  console.log(isSucces);
+  const {setIsLoading} = props
   const dispatch = useDispatch()
   const login = ()=>{
+    setIsLoading(true)
       const body = {
         email,
         password : pass
       }
-      setIsLoading(true)
       dispatch(loginAction(body))
       setIsLoading(false)
       setShow(true)
@@ -45,7 +46,7 @@ const Login = (props) => {
     <Modal show={show} onClose={()=>{
       if(isSucces){
         if(!userInfo.pin){
-          setPage('Create Pin')
+          router.push('/create-pin')
         }
         if(userInfo.pin){
           router.push('/dashboard')
@@ -78,14 +79,12 @@ const Login = (props) => {
                   </div>
               </div>
               <span onClick={()=>{
-                props.setPage('Forgot Password')
-                router.push('/auth', 'auth/reset-password')
+                router.push('/auth/reset-password', 'auth/reset-password')
               }}>Forgot Password?</span>
               <div className={styles.signUpButton} onClick={login}>Login</div>
             </div>
             <p className={styles.loginRoute}>Don`t have an account? Let’s <b  onClick={()=>{
-              props.setPage('Sign Up')
-              router.push('/auth', 'auth/signup')
+              router.push('/auth/signup', 'auth/signup')
             }}>Sign Up</b></p>
         </div>
       </>

@@ -100,4 +100,27 @@
 .imgPin{
     height: 70px;
     width: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.succesCreate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 40px;
+}
+.succesCreate>span{
+    color: #3A3D42;
+    font-weight: 700;
+    font-size: 24px;
+}
+.succesCreate>p{
+    color: rgba(58, 61, 66, 0.6);
+    font-weight: 400;
+    font-size: 16px;
 }

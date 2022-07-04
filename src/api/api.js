@@ -50,3 +50,8 @@ export const transfer = (body, token)=>{
     let conf = config(token)
     return axios.post(`${process.env.SERVER_HOST}/transaction/transfer`, body, conf)
 }
+
+export const editImage = (id, body, token)=>{
+    const config = { headers: { Authorization: `Bearer ${token}`, "content-type": "multipart/form-data" } }
+    return axios.patch(`${process.env.SERVER_HOST}/user/image/${id}`, body, config)
+}

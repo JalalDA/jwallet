@@ -11,7 +11,7 @@
     opacity: 0;
     transition: all 0.5s ease-in-out;
     pointer-events: none;
-    z-index: 1;
+    z-index: 120;
 }
 .modal.show{
     opacity: 1;
@@ -23,14 +23,14 @@
     justify-content: flex-start;
     flex-direction: column;
     row-gap: 40px;
-    background-color: white;
+    background-color: rgb(173, 119, 119);
     padding : 16px 29px;
     border-radius: 20px;
     width: 503px;
     transform: translateY(-200);
     transition: all 0.3s ease-in-out;
     padding: 35px;
-    z-index: 99;
+    z-index: 1009;
 }
 .modal.show .modalContent{
     transform: translateY(0);

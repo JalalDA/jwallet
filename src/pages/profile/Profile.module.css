@@ -41,6 +41,32 @@
     width: 100%;
     margin-bottom: 50px;
 }
+.edit{
+    position: relative;
+}
+.edit > input{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    opacity: 0;
+    cursor: pointer;
+}
+.saveImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #6379F4;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.saveImage:hover{
+    background-color:#94a0e4;
+}
 .edit > span{
     font-size: 16px;
     font-weight: 400;
@@ -101,4 +127,82 @@
     color:#514F5B;
     font-weight: 700;
     font-size: 22px;
+}
+.inputPassword{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0;
+    width: 55%;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.6);
+    margin-bottom: 63px;
+}
+.inputPassword>input{
+    border: none;
+    width: 80%;
+}
+.inputPassword>input:focus{
+    outline: none;
+}
+.btnChange{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DADADA;
+    color: #88888F;
+    padding: 16px 140px;
+    border-radius: 12px;
+}
+.btnChangeAct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#6379F4;
+    color: #FFFFFF;
+    padding: 16px 140px;
+    border-radius: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.inputpin{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 90px;
+    width: 80%;
+}
+.singleInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(169, 169, 169, 0.6);
+    box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+    width: 53px;
+    height: 65px;
+}
+.inputpin > input{
+    height: 65px;
+    width: 53px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+    border: 1px solid rgba(169, 169, 169, 0.6);
+}
+.inputpin > input:focus{
+    outline: 1px solid #6379F4 ;
+}
+.singleInput > input{
+    width: 20px;
+    height: 20px;
+    border: none;
+    font-size: 1.3rem;
+}
+.singleInput>input:focus{
+    outline: none;
 }

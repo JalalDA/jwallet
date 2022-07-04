@@ -3,7 +3,7 @@ import Image from 'next/image'
 import mail from '../../../assets/img/mail.png'
 import {forgotPassword} from '../../../api/api'
 import { useSelector } from 'react-redux'
-
+import AuthLayout from '../../../components/auth/AuthLayout'
 import { useState } from 'react'
 import Modal from '../../../components/Modal'
 const ForgotPassword = (props) => {
@@ -29,7 +29,8 @@ const ForgotPassword = (props) => {
     }
   }
   return (
-    <div className={styles.forgotContainer}>
+    <AuthLayout title={'Reset Password'}>
+      <div className={styles.forgotContainer}>
       <Modal show={show} response={msg} onClose={()=>{
         setShow(false)
       }}/>
@@ -44,6 +45,7 @@ const ForgotPassword = (props) => {
       </div>
       <div className={btn ? styles.confirmButtonAct : styles.confirmButton} onClick={sendEmail} >Confirm</div>
     </div>
+    </AuthLayout>
   )
 }
 

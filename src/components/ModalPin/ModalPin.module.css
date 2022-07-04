@@ -17,6 +17,21 @@
     opacity: 1;
     pointer-events: visible;
 }
+.modalContentPrompt{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    row-gap: 40px;
+    background-color: white;
+    padding : 16px 29px;
+    border-radius: 20px;
+    width: 503px;
+    transform: translateY(-200);
+    transition: all 0.3s ease-in-out;
+    padding: 35px;
+    z-index: 100;
+}
 .modalContent{
     display: flex;
     align-items: flex-start;
@@ -118,6 +133,7 @@
     border-radius: 12px;
     font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
 }
 .modalButtonAct{
     display: flex;
@@ -130,4 +146,11 @@
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
+}
+.btnPrompt{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
 }

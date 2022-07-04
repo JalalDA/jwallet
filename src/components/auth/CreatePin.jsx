@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux'
 import { updatePin } from '../../api/api'
 import Image from 'next/image'
 import success from '../../assets/img/success.png'
+import { useRouter } from 'next/router'
 
-const CreatePin = () => {
+const CreatePin = (props) => {
   const inputPin = useRef()
   const secPin = useRef()
   const thirdPin = useRef()
@@ -17,15 +18,22 @@ const CreatePin = () => {
   const[isSucces, setIsSucces] = useState(false)
   const id = useSelector(state=>state.login.userInfo.id)
   const token = useSelector(state=>state.login.userInfo.token)
+  const {showLoad} = props
+  const router = useRouter()
+
   const createPin = ()=>{
+    showLoad(true)
     const body = {
       pin
     }
     updatePin(id, body, token)
     .then(result=>{
+      console.log(result);
       setIsSucces(true)
+      showLoad(false)
     }).catch(err=>{
       console.log(err);
+      showLoad(false)
     })
   }
   useEffect(()=>{
@@ -40,8 +48,13 @@ const CreatePin = () => {
       <div className={styles.imgPin}>
       <Image src={success} alt="succes" height={70} width={70}/>
       </div>
+      <div className={styles.succesCreate}>
       <span>Your PIN Was Successfully Created</span>
       <p>Your PIN was successfully created and you can now access all the features in FazzPay.</p>
+      <div className={styles.confimButtonAct} onClick={()=>{
+        router.push('/dashboard')
+      }}>Go to Dashboard</div>
+      </div>
       </>
       : 
       <>

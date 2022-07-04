@@ -33,6 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .login{
   border-radius: 10px;
