@@ -1,0 +1,21 @@
+.headerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 150px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.logo{
+    font-size: 29px;
+    font-weight: 700;
+    color: #6379f4;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 18%;
+}

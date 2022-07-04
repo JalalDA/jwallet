@@ -1,0 +1,7 @@
+.dashboardContainer{
+    width: 100%;
+    background-color: #FAFCFF;
+    z-index: -2;
+    display: flex;
+    justify-content: space-between;
+}

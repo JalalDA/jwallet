@@ -1,4 +1,4 @@
-import {loginPending, loginStr, loginSucces, loginReject} from '../actionCreator/actionString'
+import {getuUserPending, getuUserSucces, getuUserReject, getUserStr} from '../actionCreator/actionString'
 
 const initialState = {
     userInfo : {},
@@ -7,18 +7,17 @@ const initialState = {
     msg : ""
 }
 
-const loginReducer = (state = initialState, action)=>{
-
+const getUserReducer = (state = initialState, action)=>{
     switch (action.type) {
-        case loginStr + loginPending :
+        case getUserStr + getuUserPending :
         return {...state, isLoading : true}
-        case  loginStr + loginSucces :
+        case  getUserStr + getuUserSucces :
         return {...state, isSucces : true, userInfo : action.payload.data.data, msg : action.payload.data.msg}
-        case loginStr + loginReject :
+        case getUserStr + getuUserReject :
         return {...state, isLoading : false, isSucces : false, msg : action.payload.response.data.msg}
         default:
         return {...state}
     }
 }
 
-export default loginReducer
+export default getUserReducer

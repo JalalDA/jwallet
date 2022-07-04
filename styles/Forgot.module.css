@@ -1,3 +1,10 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .forgotContainer{
     width: 50%;
 }

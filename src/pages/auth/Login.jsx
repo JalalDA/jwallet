@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image'
 import styles from '../../../styles/Signup.module.css'
-import {Envelope, Lock, Eye, EyeSlashFill } from 'react-bootstrap-icons';
 import { useRouter } from 'next/router';
 import lockIcon from '../../assets/img/lockIcon.png'
 import mail from '../../assets/img/mail.png'
@@ -35,12 +34,10 @@ const Login = (props) => {
     <Modal show={show} onClose={()=>{
       setShow(false)
       if(isSucces){
-        if(pin){
-          router.push('/home')
-        }else{
-          props.setPage('createPin')
-          router.push('/auth', 'auth/create-pin')
+        if(!pin){
+          props.setPage('Create Pin')
         }
+        router.push('/dashboard')
       }
     }} response={msg}/>
         <div className={styles.signUpContainer}>
@@ -69,13 +66,13 @@ const Login = (props) => {
                   </div>
               </div>
               <span onClick={()=>{
-                props.setPage('forgot-password')
-                router.push('/auth', 'auth/forgot-password')
+                props.setPage('Forgot Password')
+                router.push('/auth', 'auth/reset-password')
               }}>Forgot Password?</span>
               <div className={styles.signUpButton} onClick={login}>Login</div>
             </div>
             <p className={styles.loginRoute}>Don`t have an account? Let’s <b  onClick={()=>{
-              props.setPage('signup')
+              props.setPage('Sign Up')
               router.push('/auth', 'auth/signup')
             }}>Sign Up</b></p>
         </div>

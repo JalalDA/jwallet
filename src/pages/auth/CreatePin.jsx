@@ -2,6 +2,8 @@ import styles from '../../../styles/CreatePin.module.css'
 import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { updatePin } from '../../api/api'
+import Image from 'next/image'
+import success from '../../assets/img/success.png'
 
 const CreatePin = () => {
   const inputPin = useRef()
@@ -12,6 +14,7 @@ const CreatePin = () => {
   const sixthPin = useRef()
   const [btn, setBtn] = useState(false)
   const [pin, setPin] = useState('')
+  const[isSucces, setIsSucces] = useState(false)
   const id = useSelector(state=>state.login.userInfo.id)
   const token = useSelector(state=>state.login.userInfo.token)
   const createPin = ()=>{
@@ -20,18 +23,29 @@ const CreatePin = () => {
     }
     updatePin(id, body, token)
     .then(result=>{
-      console.log(token)
-      alert(result.data.msg)
+      setIsSucces(true)
     }).catch(err=>{
       console.log(err);
     })
   }
   useEffect(()=>{
-    inputPin.current.focus()
+    if(inputPin){
+      inputPin.current.focus()
+    }
   },[])
   return (
     <div className={styles.createPinContainer}>
-      <span>Secure Your Account, Your Wallet, and Your Data With 6 Digits PIN That You Created Yourself.</span>
+      {isSucces ? 
+      <>
+      <div className={styles.imgPin}>
+      <Image src={success} alt="succes" height={70} width={70}/>
+      </div>
+      <span>Your PIN Was Successfully Created</span>
+      <p>Your PIN was successfully created and you can now access all the features in FazzPay.</p>
+      </>
+      : 
+      <>
+       <span>Secure Your Account, Your Wallet, and Your Data With 6 Digits PIN That You Created Yourself.</span>
       <p>Create 6 digits pin to secure all your money and your data in FazzPay app. Keep it secret and don’t tell anyone about your FazzPay account password and the PIN.</p>
       <div className={styles.inputpin}>
           <input ref={inputPin} type="integer" id='first' maxLength={1} onKeyUp={(e)=>{
@@ -75,6 +89,7 @@ const CreatePin = () => {
           }}/>
       </div>
       <div className={btn ? styles.confimButtonAct : styles.confimButton} onClick={createPin}>Confirm</div>
+      </>}
     </div>
   )
 }

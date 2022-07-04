@@ -1,0 +1,74 @@
+.container{
+    width: 70%;
+    margin-top: 40px;
+    padding: 30px;
+    margin-left: 30px;
+    margin-right: 150px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+}
+.tittle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 55px;
+}
+.tittle>span{
+    font-size: 18px;
+    font-weight: 700;
+    color: #3A3D42;
+}
+
+.tittle>select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 12px 30px;
+    background: rgba(58, 61, 66, 0.1);
+    border-radius: 12px;
+}
+.tittle>select:focus{
+    outline: none;
+}
+.userTrans{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 18%;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+.user>span:nth-child(1){
+    font-size: 16px;
+    font-weight: 700;
+    color: #3A3D42;
+}
+.user>span:nth-child(2){
+    color: #7A7886;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.ammount{
+        color: #1EC15F;
+        font-size: 16px;
+        font-weight: 700;
+}
+.transferInputContainer input::-webkit-outer-spin-button,
+.transferInputContainer input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

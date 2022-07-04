@@ -96,7 +96,7 @@ const SignUp = (props) => {
               }>Sign Up</div>
             </div>
             <p className={styles.loginRoute}>Already have an account? Let’s <b  onClick={()=>{
-              props.setPage('login')
+              props.setPage('Login')
               router.push('/auth', 'auth/login')
             }}>Login</b></p>
         </div>

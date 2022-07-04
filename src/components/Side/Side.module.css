@@ -1,0 +1,38 @@
+.sideContainer{
+    width: 20%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+    margin-left: 150px;
+    margin-top: 40px;
+    padding: 40px 80px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #fff;
+}
+.menuSide{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+}
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 400;
+    font-size: 18px;
+    color: #3A3D42;
+}
+.item > p{
+    margin-left: 26px;
+}
+.logout{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.logout > p{
+    margin-left: 26px;
+}
