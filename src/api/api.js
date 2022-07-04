@@ -55,3 +55,24 @@ export const editImage = (id, body, token)=>{
     const config = { headers: { Authorization: `Bearer ${token}`, "content-type": "multipart/form-data" } }
     return axios.patch(`${process.env.SERVER_HOST}/user/image/${id}`, body, config)
 }
+
+export const editUserInfo = (id, body, token)=>{
+    const config = { headers: { Authorization: `Bearer ${token}`} }
+    return axios.patch(`${process.env.SERVER_HOST}/user/profile/${id}`, body, config)
+}
+
+export const editPhoneNumber = (id, body, token)=>{
+    const config = { headers: { Authorization: `Bearer ${token}`} }
+    return axios.patch(`${process.env.SERVER_HOST}/user/profile/${id}`, body, config)
+} 
+
+export const updatePassword = (id, body, token)=>{
+    const config = { headers: { Authorization: `Bearer ${token}`} }
+    return axios.patch(`${process.env.SERVER_HOST}/user/password/${id}`, body, config)
+}
+
+export const logoutServer = (token)=>{
+    const config = { headers: { Authorization: `Bearer ${token}`} }
+    return axios.post(`${process.env.SERVER_HOST}/auth/logout`, config)
+}
+

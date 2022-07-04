@@ -8,7 +8,7 @@ const Prompt = (props) => {
         <div className={styles.modalBody}>Do you want to Log out?</div>
         <div className={styles.btnPrompt}>
             <div className={styles.modalButton} onClick={props.onClose}>No</div>
-            <div className={styles.modalButtonAct} onClick={props.onClose}>Yes</div>
+            <div className={styles.modalButtonAct} onClick={props.logout}>Yes</div>
         </div>
     </div>
 </div>

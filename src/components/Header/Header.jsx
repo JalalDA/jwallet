@@ -13,15 +13,15 @@ const Header = () => {
       <div className={styles.logo}>FazzPay</div>
       <div className={styles.profile}>
         <div className={styles.imgProfile}>
-          <Image src={userInfo.image ? userInfo.image : blankProfile} alt="profile image" height={50} width={50}
+          <Image src={userInfo && userInfo.image ? `${process.env.CLOUDINARY_URL}${userInfo.image}` : blankProfile} alt="profile image" height={50} width={50}
           onClick={()=>{
             router.push('/profile')
           }}
           />  
         </div>
         <div className={styles.info}>
-          <div className="name">{`${userInfo.firstName} ${userInfo.lastName}`}</div>
-          <div className="phone">{userInfo.noTelp}</div>
+          <div className="name">{userInfo && `${userInfo.firstName} ${userInfo.lastName}`}</div>
+          <div className="phone">{userInfo && userInfo.noTelp}</div>
         </div>
         <div className={styles.notif}>
           <Image src={bell} alt="notification"/>

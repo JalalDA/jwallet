@@ -9,30 +9,47 @@ import { useRouter } from 'next/router'
 import TopUp from '../ModalPin/TopUp'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import getUserAction from '../../../redux/actionCreator/getUser'
+import {getUserAction} from '../../../redux/actionCreator/getUser'
 import getDashboardAction from '../../../redux/actionCreator/getDashboard'
-
+import Loading from '../Loading/Loading'
+import axios from 'axios'
 
 const Sidebar = () => {
     const [show, setShow] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const id = useSelector(state=>state.login.userInfo.id)
     const token = useSelector(state=>state.login.userInfo.token)
     const dashboardInfo = useSelector(state=>state.dashboard.dashboardInfo)
     const userInfo = useSelector(state=>state.user.userInfo)
+    const [data, setData] = useState([])
     const dispatch = useDispatch()
     useEffect( ()=>{
+        setIsLoading(true)
         dispatch(getUserAction(id, token))
         dispatch(getDashboardAction(id, token))
+        const getAllHistory = async ()=>{
+            try {
+                const config = { headers: { Authorization: `Bearer ${token}`} }
+                const result = await axios.get(`${process.env.SERVER_HOST}/transaction/history?page=1&limit=5&filter=MONTH`, config)
+                console.log(result);
+                setData(result.data.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getAllHistory()
+        setIsLoading(false)
     }, [id, token, dispatch])
   return (
     <>
+    {isLoading && <Loading/>}
     <TopUp show={show} onClose={setShow}/>
     <div className={styles.container}>
         <div className={styles.info}>
             <div className={styles.saldo}>
                 <span>Balance</span>
-                <span>{userInfo.balance}</span>
+                <span>{userInfo && userInfo.balance}</span>
                 <span>Phone</span>
             </div>
             <div className={styles.transaction}>
@@ -98,14 +115,21 @@ const Sidebar = () => {
                         router.push('/history')
                     }}>All</span>
                 </div>
-                <div className={styles.userTrans}>
-                    <Image src={marry} alt="profile"/>
-                    <div className={styles.userInfo}>
-                        <span>Chrity Mari</span>
-                        <span>Accept</span>
-                    </div>
-                    <div className={styles.ammount}>+ Rp50.000</div>
+                {data.map(data=><>
+            <div className={styles.userTrans}>
+                <div className={styles.userInfo}>
+                    <Image src={data && `${process.env.CLOUDINARY_URL}/${data.image}` ? `${process.env.CLOUDINARY_URL}/${data.image}` : blank  } alt="profile" height={50} width={50} />
+                        <div className={styles.user}>
+                            <span>{data && `${data.firstName} ${data.lastName}`}</span>
+                            <span>{data && data.status}</span>
+                        </div>
                 </div>
+            <div className={ data.type ==="send" && data.status==="success"? styles.ammountRed : styles.ammount}>
+            { data.type ==="send" && data.status==="success"? " - " : " + "}
+                {data.amount}
+            </div>
+        </div>
+        </>)}  
             </div>
         </div>
     </div>

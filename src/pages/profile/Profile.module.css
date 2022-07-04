@@ -116,6 +116,7 @@
     padding: 20px;
     flex-direction: column;
     row-gap: 10px;
+    position: relative;
 }
 
 .detailUser>span:nth-child(1){
@@ -127,6 +128,13 @@
     color:#514F5B;
     font-weight: 700;
     font-size: 22px;
+}
+.detailUser>span:nth-child(3){
+    position: absolute;
+    right: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6379F4;
 }
 .inputPassword{
     display: flex;
@@ -205,4 +213,92 @@
 }
 .singleInput>input:focus{
     outline: none;
+}
+.editUser{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6379F4;
+}
+.editUser>span{
+    cursor: pointer;
+}
+.detailUser>input{
+    border: none;
+    color:#514F5B;
+    font-weight: 700;
+    font-size: 22px;
+}
+.detailUser>input:focus{
+    outline: none;
+}
+.saveChange{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6379F4;
+    color: #FFFFFF;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.inputPhone{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    padding: 20px;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.6);
+}
+.inputPhone > input{
+    border: none;
+    width: 75%;
+    font-size: 16px;
+    font-weight: 700;
+    color: #3A3D42;
+}
+.inputPhone input::-webkit-outer-spin-button,
+.inputPhone input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+.inputPhone>input:focus{
+    outline: none;
+}
+.inputPhone > span{
+    font-size: 16px;
+    font-weight: 700;
+    color: #3A3D42;
+}
+.editPhone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    width: 50%;
+    background-color: #DADADA;
+    color: #88888F;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    margin-top: 70px;
+}
+.editPhoneAct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    width: 50%;
+    background-color:#6379F4;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    margin-top: 70px;
+    cursor: pointer;
 }

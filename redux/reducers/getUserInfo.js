@@ -15,6 +15,8 @@ const getUserReducer = (state = initialState, action)=>{
         return {...state, isSucces : true, userInfo : action.payload.data.data, msg : action.payload.data.msg}
         case getUserStr + getUserReject :
         return {...state, isLoading : false, isSucces : false, msg : action.payload.response.data.msg}
+        case "DELETE_USER" :
+        return {initialState}
         default:
         return state
     }

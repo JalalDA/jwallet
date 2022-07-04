@@ -7,6 +7,9 @@ import eye from '../../assets/img/eye.png'
 import eyeCross from '../../assets/img/eye-crossed.png'
 import { useState } from 'react'
 import Modal from '../../components/Modal'
+import { updatePassword } from '../../api/api'
+import { useSelector } from 'react-redux'
+import Loading from '../../components/Loading/Loading'
 
 const ChangePassword = () => {
   const [showCurent, setShowCurent] = useState(false)
@@ -14,24 +17,39 @@ const ChangePassword = () => {
   const [showConfirm, setShowConfirm] = useState(false)
   const [show, setShow] = useState(false)
   const [btn, setBtn] = useState(false)
+  const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [msg, setMsg] = useState('')
   const [mdlBody, setMdlBody] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const id = useSelector(state=>state.login.userInfo.id)
+  const token = useSelector(state=>state.login.userInfo.token)
+
 
   const change = async ()=>{
     try {
-      if(newPassword !== confirmPassword){
-        setMsg('Failed to change password')
-        setMdlBody('New Password and Confirm Password doesn`t match')
-        return setShow(true)
+      setIsLoading(true)
+      const body = {
+        oldPassword,
+        newPassword,
+        confirmPassword
       }
+      const result = await updatePassword(id, body, token)
+      setMsg(result.data.msg)
+      setIsLoading(false)
+      setShow(true)
     } catch (error) {
       console.log(error);
+      setMsg(error.response.data.msg)
+      setIsLoading(false)
+      setShow(true)
     }
   }
 
   return (
+    <>
+    {isLoading && <Loading/>}
     <Layout title={'Change Password'}>
       <Modal show={show} response={msg} mdlBody={mdlBody} onClose={()=>{
         setShow(false)
@@ -43,7 +61,11 @@ const ChangePassword = () => {
             </div>
             <div className={styles.inputPassword}>
               <Image src={lockIcon} alt="lock"/>
-              <input type={showCurent ? "text" : "password"} placeholder='Curent Password' />
+              <input type={showCurent ? "text" : "password"} placeholder='Curent Password' onChange={e=>{
+                setTimeout(()=>{
+                  setOldPassword(e.target.value)
+                }, 2000)
+              }} />
               <Image src={showCurent ? eye : eyeCross} alt="showPass" onClick={()=>{
                 setShowCurent(!showCurent)
               }}/>
@@ -70,6 +92,7 @@ const ChangePassword = () => {
             <div className={ btn? styles.btnChangeAct : styles.btnChange} onClick={change}>Change Password</div>
         </div>
     </Layout>
+    </>
   )
 }
 
