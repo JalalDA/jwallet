@@ -87,23 +87,23 @@ const Sidebar = () => {
                 </div>
                 <div className={styles.chartInfo}>
                     <div className={styles.line}>
-                        <span style={{height : dataIncome[6]}}></span>
+                        <span style={{height : dataIncome[6]} || 0}></span>
                         <span>Sunday</span>
                     </div>
                     <div className={styles.line}>
-                        <span style={{height : dataIncome[0]}}></span>
+                        <span style={{height : dataIncome[0]} || 0}></span>
                         <span>Monday</span>
                     </div>
                     <div className={styles.line}>
-                        <span style={{height : dataIncome[1]}}></span>
+                        <span style={{height : dataIncome[1]} || 0}></span>
                         <span>Tuesday</span>
                     </div>
                     <div className={styles.line}>
-                        <span style={{height : dataIncome[2]}}></span>
+                        <span style={{height : dataIncome[2]} || 0}></span>
                         <span>Wednesday</span>
                     </div>
                     <div className={styles.line}>
-                        <span style={{height : dataIncome[3]}}></span>
+                        <span style={{height : dataIncome[3]} || 0}></span>
                         <span>Thursday</span>
                     </div>
                     <div className={styles.line}>
@@ -111,7 +111,7 @@ const Sidebar = () => {
                         <span>Friday</span>
                     </div>
                     <div className={styles.line}>
-                        <span style={{height : dataIncome[5]}}></span>
+                        <span style={{height : dataIncome[5]} || 0}></span>
                         <span>Saturday</span>
                     </div>
                 </div>
