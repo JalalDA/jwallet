@@ -46,7 +46,7 @@ const Login = (props) => {
     <Modal show={show} onClose={()=>{
       if(isSucces){
         if(!userInfo.pin){
-          router.push('/create-pin')
+          router.push('/auth/create-pin')
         }
         if(userInfo.pin){
           router.push('/dashboard')
