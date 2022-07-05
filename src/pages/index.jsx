@@ -6,6 +6,10 @@ import lock from '../../src/assets/img/lock.png'
 import dIcon from '../../src/assets/img/downloadIcon.png'
 import group from '../../src/assets/img/grup2.png'
 import {useRouter} from 'next/router' 
+import LayoutImg from '../assets/img/LayoutImg.png'
+import ArrowLeft from '../assets/img/ArrowLeft.png'
+import ArrowRight from '../assets/img/ArrowRight.png'
+import ProfImg from '../assets/img/ProfImg.png'
 
 export default function Home() {
   const router = useRouter()
@@ -59,6 +63,68 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.group}><Image src={group} alt='support'/></div>
+      
+      <section className={styles.wrapperPrice}>
+          <div className={styles.priceTitle}>Rp. 390.736.500</div>
+          <div className={styles.priceBody}><div className={styles.why}>Money </div>has Been Transfered.</div>
+          <div className={styles.priceFooter}>That amount of money has been transfered from all users. We still counting and going strong!</div>
+        </section>
+        <section className={styles.wrapperFeatureTwo}>
+          <aside className={styles.featureTwoImage}>
+            <Image src={LayoutImg} alt='layoutImg'></Image>
+          </aside>
+          <aside className={styles.featureTwoContent}>
+            <div className={styles.featureTwoContentTitle}>All The <div className={styles.why}>Great</div> FazzPay Features.</div>
+            <div className={styles.wrapperFeatureContentBody}>
+              <div className={styles.featureTwoContentHeader}><div className={styles.why}>1.</div>Small Fee</div>
+              <div className={styles.featureTwoContentBody}>We only charge 5% of every success transaction done in FazzPay app.</div>
+            </div>
+            <div className={styles.wrapperFeatureContentBody}>
+              <div className={styles.featureTwoContentHeader}><div className={styles.why}>2.</div>Data Secured</div>
+              <div className={styles.featureTwoContentBody}>All your data is secured properly in our system and it’s encrypted.</div>
+            </div>
+            <div className={styles.wrapperFeatureContentBody}>
+              <div className={styles.featureTwoContentHeader}><div className={styles.why}>3.</div>User Friendly</div>
+              <div className={styles.featureTwoContentBody}>FazzPay come up with modern and sleek design and not complicated.</div>
+            </div>
+          </aside>
+        </section>
+        <section className={styles.wrapperUser}>
+          <div className={styles.userHeader}>
+            <div className={styles.userTitle}>What Users are <div className={styles.why}>Saying.</div></div>
+            <div className={styles.userBody}>We have some great features from the application and it’s totally free to use by all users around the world.</div>
+            <div className={styles.wrapperCard}>
+              <div className={styles.arrowIcon}>
+                <Image src={ArrowLeft} alt='arrowIcon'></Image>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.cardImg}>
+                  <Image src={ProfImg} alt='profilImage'></Image>
+                </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.username}>Alex Hansinburg</div>
+                  <div className={styles.role}>Designer</div>
+                </div>
+                <div className={styles.cardFooter}>“This is the most outstanding app that I’ve ever try in my live, this app is such an amazing masterpiece and it’s suitable for you who is bussy with their bussiness and must transfer money to another person aut there. Just try this app and see the power!”</div>
+              </div>
+              <div className={styles.arrowIcon}>
+                <Image src={ArrowRight} alt='arrowIcon'></Image>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer className={styles.containerFooter}>
+        <aside className={styles.wrapperFooterHeader}>
+          <div className={styles.fazzPay}>FazzPay</div>
+          <div className={styles.footerBody}>Simplify financial needs and saving much time in banking needs with one single app.</div>
+        </aside>
+        <div className={styles.wrapperFooterEnd}>
+          <div className={styles.year}>2020 FazzPay. All right reserved.</div>
+          <div className={styles.contactNumber}>+62 5637 8882 9901</div>
+          <div className={styles.contactEmail}>contact@fazzpay.com</div>
+        </div>
+      </footer>
+
     </>
   )
 }
