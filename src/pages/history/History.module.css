@@ -77,3 +77,38 @@
   -webkit-appearance: none;
   margin: 0;
 }
+.paginasi{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+}
+.count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: #7A7886;
+    border-radius: 30%;
+}
+.countAct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: #6379F4;
+    border-radius: 30%;
+    color: #FFFFFF;
+}
+
+.showMore{
+    font-size: 18px;
+    font-weight: 700;
+    color: #7A7886;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+}

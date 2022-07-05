@@ -9,7 +9,7 @@ const TopUp = (props) => {
     const [amount, setAmmount] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
-    const token = useSelector(state=>state.login.userInfo.token)
+    const token = useSelector(state=>state.login.token)
     const addSaldo = async ()=>{
         try {
             setIsLoading(true)

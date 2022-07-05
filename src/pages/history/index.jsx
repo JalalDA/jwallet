@@ -1,19 +1,23 @@
 import styles from './History.module.css'
 import Image from 'next/image'
-import marry from '../../assets/img/1.png'
 import Layout from '../../components/Layout'
 import { useEffect, useState } from 'react'
 import Loading from '../../components/Loading/Loading'
 import blank from '../../assets/img/profileBlank.jpg'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
+import ArrowLeft from '../../assets/img/ArrowLeft.png'
+import ArrowRight from '../../assets/img/ArrowRight.png'
+import { useRouter } from 'next/router'
+
 const History = () => {
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(8)
+    const [limit, setLimit] = useState(6)
     const [filter, setFilter] = useState("MONTH")
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const token = useSelector(state=>state.login.token)
+    const router = useRouter()
 
     useEffect(()=>{
         const getAllHistory = async ()=>{
@@ -61,7 +65,27 @@ const History = () => {
                 {data.amount}
             </div>
         </div>
-        </>)}       
+        </>)}
+        <div className={styles.showMore} onClick={()=>{
+            setLimit(limit + 6)
+            router.push('/history', `/history/page=${page}&limit=${limit+6}`)
+        }
+        }>Show More ...</div>
+        <div className={styles.paginasi}>
+            <Image src={ArrowLeft} alt="prev" onClick={()=>{
+                if(page !== 1){
+                    setPage(page-1)
+                    router.push('/history', `/history/page=${page - 1}&limit=${limit}`)
+                }
+            }}/>
+            <div className={page === 1 ? styles.countAct : styles.count}>1</div>
+            <div className={page === 2 ? styles.countAct : styles.count}>2</div>
+            <div className={page === 3 ? styles.countAct : styles.count}>3</div>
+            <Image src={ArrowRight} alt="next" onClick={()=>{
+                setPage(page+1)
+                router.push('/history', `/history/page=${page + 1}&limit=${limit}`)
+            }}/>
+        </div>
     </div>
     </Layout>
     </>
