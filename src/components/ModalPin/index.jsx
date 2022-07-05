@@ -2,6 +2,7 @@ import styles from './ModalPin.module.css'
 import {useRef, useEffect, useState} from 'react'
 import {checkPinUser, transfer} from '../../api/api'
 import { useSelector } from 'react-redux'
+import Loading from '../Loading/Loading'
 
 const ModalPin = (props) => {
     const [pin, setPin] = useState('')
@@ -14,7 +15,8 @@ const ModalPin = (props) => {
     const fivethPin = useRef()
     const sixthPin = useRef()
     const token = useSelector(state=>state.login.userInfo.token)
-    const {amount, receiverId, note, onClose, setShowPage} = props
+    const [isLoading, setIsLoading] = useState(false)
+    const {amount, receiverId, note, onClose, setShowPage, setTransactionId} = props
     const body = {
       amount,
       receiverId,
@@ -22,24 +24,28 @@ const ModalPin = (props) => {
     }
     const checkPin = async ()=>{
       try {
+        setIsLoading(true)
         const result = await checkPinUser(pin, token)
         setMsg(result.data.msg)
-        if(msg === 'Correct pin'){
-          const resTrans = await transfer(body, token)
-          setShowPage('succes')
-          setMsg(resTrans.data.msg)
-          onClose(false)
-        }
+        const resTrans = await transfer(body, token)
+        setShowPage('succes')
+        setMsg(resTrans.data.msg)
+        setTransactionId(resTrans.data.data.id)
+        onClose(false)
+        setIsLoading(false)
       } catch (error) {
         console.log(error);
         setShowPage('failed')
         onClose(false)
+        setIsLoading(false)
       }
     }
     useEffect(()=>{
         inputPin.current.focus()
     },[])
     return (
+      <>
+      {isLoading && <Loading/>}
     <div className={`${styles.modal} ${props.show ? styles.show: ''} `}>
         <div className={styles.modalContent}>
             <div className={styles.modalHeader}>Enter PIN to transfer</div>
@@ -88,6 +94,7 @@ const ModalPin = (props) => {
             <div className={btn ? styles.modalButtonAct : styles.modalButton} onClick={checkPin}>Continue</div>
         </div>
     </div>
+    </>
 )
 }
 

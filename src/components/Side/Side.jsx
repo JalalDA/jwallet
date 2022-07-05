@@ -5,28 +5,42 @@ import grid from '../../assets/img/grid.png'
 import arrow from '../../assets/img/arrow-up.png'
 import user from '../../assets/img/userDash.png'
 import logout from '../../assets/img/log-out.png'
+import { useRouter } from 'next/router'
+
+
 const Side = () => {
+  const router = useRouter()
   return (
     <div className={styles.sideContainer}>
       <div className={styles.menuSide}>
-        <div className={styles.item}>
+        <div className={styles.item} onClick={()=>{
+          router.push('/dashboard')
+        }}>
           <Image src={grid} alt="user"/>
-          <p>Dashboard</p>
+          <span>Dashboard</span>
         </div>
-        <div className={styles.item}>
+        <div className={styles.item}onClick={()=>{
+          router.push('/transfer')
+        }}>
           <Image src={plus} alt="user"/>
-          <p>Transfer</p>
+          <span>Transfer</span>
         </div>
-        <div className={styles.item}>
+        <div className={styles.item}onClick={()=>{
+          router.push('/topup')
+        }}>
           <Image src={arrow} alt="user"/>
-          <p>Top Up</p>
+          <span>Top Up</span>
         </div>
-        <div className={styles.item}>
+        <div className={styles.item}onClick={()=>{
+          router.push('/profile')
+        }}>
           <Image src={user} alt="user"/>
-          <p>Profile</p>
+          <span>Profile</span>
         </div>
       </div>
-      <div className={styles.logout}>
+      <div className={styles.logout}onClick={()=>{
+          router.push('/dashboard')
+        }}>
         <Image src={logout} alt="logout"/>
         <p>Logout</p>
       </div>

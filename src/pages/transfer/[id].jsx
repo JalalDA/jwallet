@@ -11,6 +11,9 @@ import ModalPin from '../../components/ModalPin'
 import succesIcon from '../../assets/img/success.png'
 import failIcon from '../../assets/img/failed.png'
 import downloadIcon from '../../assets/img/download.png'
+import { currencyFormatter } from '../../components/helper/helper'
+import { exportTrans } from '../../api/api'
+import Loading from '../../components/Loading/Loading'
 
 const Detail = () => {
     const token = useSelector(state=>state.login.userInfo.token)
@@ -21,8 +24,21 @@ const Detail = () => {
     const [show, setShow] = useState(false)
     const [amount, setAmount] = useState(0)
     const [note, setNote ] = useState('')
+    const [transactionId, setTransactionId] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const availBalance = useSelector(state=>state.user.userInfo.balance)
 
+    const downloadPdf = async()=>{
+        try {
+            setIsLoading(true)
+            const result = await exportTrans(transactionId, token)
+            window.open(`${result.data.data.url}`, "_blank");
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error);
+            setIsLoading(true)
+        }
+    }
     useEffect(()=>{
         const getUserById = async ()=>{
             try {
@@ -35,6 +51,7 @@ const Detail = () => {
         getUserById()
     }, [id, token])
   return (
+    <>
     <Layout title={'Transfer'}>
         <ModalPin 
         show ={show} 
@@ -43,17 +60,19 @@ const Detail = () => {
         receiverId={id} 
         onClose={setShow}
         setShowPage={setShowPage}
+        setTransactionId={setTransactionId}
         />
     <div className={styles.container}>
         {showPage === 'input' 
             ? 
             <>
+            {isLoading && <Loading/>}
             <div className={styles.tittle}>
             <span>Transfer Money</span>
         </div>
         <div className={styles.userTrans}>
             <div className={styles.userInfo}>
-            <Image src={`${process.env.CLOUDINARY_URL}${detailUser.image}` || blankProfile} alt="profile" width={100} height={100}/>
+            <Image src={detailUser && detailUser.image ? `${process.env.CLOUDINARY_URL}${detailUser.image}` : blankProfile} alt="profile" width={100} height={100}/>
             <div className={styles.user}>
                 <span>{`${detailUser.firstName} ${detailUser.lastName}`}</span>
                 <span>{detailUser.phone}</span>
@@ -68,7 +87,7 @@ const Detail = () => {
             <input type="number" placeholder='0' onChange={e=>{
                 setAmount(e.target.value)
             }}/>
-            <span>{availBalance} Available</span>
+            <span>{currencyFormatter.format(availBalance)} Available</span>
             <div className={styles.notes}>
                 <Image src={notes} alt="notes"/>
                 <input type="text" placeholder='Add some notes here' onChange={(e)=>{
@@ -104,7 +123,7 @@ const Detail = () => {
             <div className={styles.userInfo}>
             <div className={styles.detailInfo}>
                 <span>Ammount</span>
-                <span>{amount}</span>
+                <span>{currencyFormatter.format(amount)}</span>
             </div>
             </div>
         </div>
@@ -112,7 +131,7 @@ const Detail = () => {
             <div className={styles.userInfo}>
             <div className={styles.detailInfo}>
                 <span>Balance Left</span>
-                <span>Rp120000</span>
+                <span>{currencyFormatter.format(availBalance - amount)}</span>
             </div>
             </div>
         </div>
@@ -151,7 +170,7 @@ const Detail = () => {
         <div className={styles.userInfo}>
         <div className={styles.detailInfo}>
             <span>Ammount</span>
-            <span>{amount}</span>
+            <span>{currencyFormatter.format(amount)}</span>
         </div>
         </div>
     </div>
@@ -159,7 +178,7 @@ const Detail = () => {
         <div className={styles.userInfo}>
         <div className={styles.detailInfo}>
             <span>Balance Left</span>
-            <span>Rp120000</span>
+            <span>{currencyFormatter.format(availBalance - amount)}</span>
         </div>
         </div>
     </div>
@@ -194,11 +213,13 @@ const Detail = () => {
     </div>
 
     <div className={styles.btnContinue}>
-        <div className={styles.btnDownload}>
+        <div className={styles.btnDownload} onClick={downloadPdf}>
             <Image src={downloadIcon} alt="download"/>
             <span>Download PDF</span>
         </div>
-        <div className={styles.continue} >
+        <div className={styles.continue} onClick={()=>{
+            router.push('/dashboard')
+        }}>
             <div className="btn">Back To Home</div>
         </div>
     </div>
@@ -260,11 +281,13 @@ const Detail = () => {
     </div>
 
     <div className={styles.btnContinue}>
-        <div className={styles.btnDownload}>
+        {/* <div className={styles.btnDownload}>
             <Image src={downloadIcon} alt="download"/>
             <span>Download PDF</span>
-        </div>
-        <div className={styles.continue} >
+        </div> */}
+        <div className={styles.continue} onClick={()=>{
+            router.push('/dashboard')
+        }}>
             <div className="btn">Back To Home</div>
         </div>
     </div>
@@ -272,6 +295,7 @@ const Detail = () => {
         </>: ""}
     </div>
     </Layout>
+    </>
   )
 }
 

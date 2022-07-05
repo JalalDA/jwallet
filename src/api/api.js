@@ -76,3 +76,7 @@ export const logoutServer = (token)=>{
     return axios.post(`${process.env.SERVER_HOST}/auth/logout`, config)
 }
 
+export const exportTrans =(id, token)=>{
+    const config = { headers: { Authorization: `Bearer ${token}`} }
+    return axios.get(`${process.env.SERVER_HOST}/export/transaction/${id}`, config)
+}

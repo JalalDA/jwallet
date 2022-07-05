@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import Layout from "../../components/Layout"
 import styles from './Profile.module.css'
 import { editUserInfo } from "../../api/api"
-import getUserAction from "../../../redux/actionCreator/getUser"
+import {getUserAction} from "../../../redux/actionCreator/getUser"
 import Loading from "../../components/Loading/Loading"
 import Modal from "../../components/Modal"
 import { useRouter } from "next/router"
@@ -16,9 +16,9 @@ const Personal = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [show, setShow] = useState(false)
     const [msg, setMsg] = useState('')
-    const id = useSelector(state=>state.login.userInfo.id)
+    const id = useSelector(state=>state.login.id)
     console.log(id);
-    const token = useSelector(state=>state.login.userInfo.token)
+    const token = useSelector(state=>state.login.token)
     const dispatch = useDispatch()
     const router = useRouter()
 

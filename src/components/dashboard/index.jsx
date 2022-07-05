@@ -13,6 +13,7 @@ import {getUserAction} from '../../../redux/actionCreator/getUser'
 import getDashboardAction from '../../../redux/actionCreator/getDashboard'
 import Loading from '../Loading/Loading'
 import axios from 'axios'
+import { currencyFormatter } from '../helper/helper'
 
 const Sidebar = () => {
     const [show, setShow] = useState(false)
@@ -24,6 +25,9 @@ const Sidebar = () => {
     const userInfo = useSelector(state=>state.user.userInfo)
     const [data, setData] = useState([])
     const dispatch = useDispatch()
+    const {listIncome} = dashboardInfo
+    const dataIncome = listIncome.map(e=>e.total / 2000000 * 100) 
+
     useEffect( ()=>{
         setIsLoading(true)
         dispatch(getUserAction(id, token))
@@ -49,7 +53,7 @@ const Sidebar = () => {
         <div className={styles.info}>
             <div className={styles.saldo}>
                 <span>Balance</span>
-                <span>{userInfo && userInfo.balance}</span>
+                <span>{userInfo && currencyFormatter.format(userInfo.balance)}</span>
                 <span>Phone</span>
             </div>
             <div className={styles.transaction}>
@@ -73,38 +77,42 @@ const Sidebar = () => {
                     <div className={styles.income}>
                         <Image src={income} alt="income"/>
                         <span>Income</span>
-                        <span>{dashboardInfo.totalIncome}</span>
+                        <span>{dashboardInfo && currencyFormatter.format(dashboardInfo.totalIncome)}</span>
                     </div>
                     <div className={styles.income}>
                         <Image src={expense} alt="expense"/>
                         <span>Expense</span>
-                        <span>{dashboardInfo.totalExpense}</span>
+                        <span>{dashboardInfo && currencyFormatter.format(dashboardInfo.totalExpense)}</span>
                     </div>
                 </div>
                 <div className={styles.chartInfo}>
                     <div className={styles.line}>
-                        <span></span>
-                        <span>Sun</span>
+                        <span style={{height : dataIncome[6]}}></span>
+                        <span>Sunday</span>
                     </div>
                     <div className={styles.line}>
-                        <span></span>
-                        <span>Mon</span>
+                        <span style={{height : dataIncome[0]}}></span>
+                        <span>Monday</span>
                     </div>
                     <div className={styles.line}>
-                        <span></span>
-                        <span>Sun</span>
+                        <span style={{height : dataIncome[1]}}></span>
+                        <span>Tuesday</span>
                     </div>
                     <div className={styles.line}>
-                        <span></span>
-                        <span>Sun</span>
+                        <span style={{height : dataIncome[2]}}></span>
+                        <span>Wednesday</span>
                     </div>
                     <div className={styles.line}>
-                        <span></span>
-                        <span>Sun</span>
+                        <span style={{height : dataIncome[3]}}></span>
+                        <span>Thursday</span>
                     </div>
                     <div className={styles.line}>
-                        <span></span>
-                        <span>Sun</span>
+                        <span style={{height : 4}}></span>
+                        <span>Friday</span>
+                    </div>
+                    <div className={styles.line}>
+                        <span style={{height : dataIncome[5]}}></span>
+                        <span>Saturday</span>
                     </div>
                 </div>
             </div>
@@ -124,9 +132,9 @@ const Sidebar = () => {
                             <span>{data && data.status}</span>
                         </div>
                 </div>
-            <div className={ data.type ==="send" && data.status==="success"? styles.ammountRed : styles.ammount}>
-            { data.type ==="send" && data.status==="success"? " - " : " + "}
-                {data.amount}
+            <div className={data && data.type ==="send" && data.status==="success"? styles.ammountRed : styles.ammount}>
+            {data && data.type ==="send" && data.status==="success"? " - " : " + "}
+                {data && currencyFormatter.format(data.amount)}
             </div>
         </div>
         </>)}  
