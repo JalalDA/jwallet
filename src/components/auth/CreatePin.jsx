@@ -62,35 +62,47 @@ const CreatePin = (props) => {
       <p>Create 6 digits pin to secure all your money and your data in FazzPay app. Keep it secret and don’t tell anyone about your FazzPay account password and the PIN.</p>
       <div className={styles.inputpin}>
           <input ref={inputPin} type="integer" id='first' maxLength={1} onKeyUp={(e)=>{
-            if(e){
+            if(e.key!=="Bac"){
               secPin.current.focus()
             }
           }} onChange={e=>{
             setPin(prev=>prev+=e.target.value)
           }}/>
           <input ref={secPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
-            if(e){
+            if(e.key === "Backspace"){
+              inputPin.current.focus()
+            }
+            if(e.key!=="Backspace"){
               thirdPin.current.focus()
             }
           }} onChange={e=>{
             setPin(prev=>prev+=e.target.value)
           }}/>
           <input ref={thirdPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
-            if(e){
+            if(e.key === "Backspace"){
+              secPin.current.focus()
+            }
+            if(e.key !== "Backspace"){
               fourthPin.current.focus()
             }
           }} onChange={e=>{
             setPin(prev=>prev+=e.target.value)
           }} />
           <input ref={fourthPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
-            if(e){
+            if(e.key === "Backspace"){
+              thirdPin.current.focus()
+            }
+            if(e.key!=="Backspace"){
               fivethPin.current.focus()
             }
           }}onChange={e=>{
             setPin(prev=>prev+=e.target.value)
           }} />
           <input ref={fivethPin} type="text" id='first' maxLength={1} onKeyUp={(e)=>{
-            if(e){
+            if(e.key === "Backspace"){
+              fourthPin.current.focus()
+            }
+            if(e.key !== "Backspace"){
               sixthPin.current.focus()
             }
           }} onChange={e=>{
@@ -99,6 +111,10 @@ const CreatePin = (props) => {
           <input ref={sixthPin} type="text" id='first' maxLength={1} onChange={e=>{
             setPin(prev=>prev+=e.target.value)
             setBtn(true)
+          }} onKeyUp={(e)=>{
+            if(e.key === "Backspace"){
+              fivethPin.current.focus()
+            }
           }}/>
       </div>
       <div className={btn ? styles.confimButtonAct : styles.confimButton} onClick={createPin}>Confirm</div>
