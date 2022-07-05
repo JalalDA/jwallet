@@ -26,7 +26,7 @@ const Sidebar = () => {
     const [data, setData] = useState([])
     const dispatch = useDispatch()
     const {listIncome} = dashboardInfo
-    const dataIncome = listIncome.map(e=>e.total / 2000000 * 100) 
+    const dataIncome = listIncome && listIncome.map(e=>e.total / 2000000 * 100) 
 
     useEffect( ()=>{
         setIsLoading(true)
@@ -123,7 +123,7 @@ const Sidebar = () => {
                         router.push('/history')
                     }}>All</span>
                 </div>
-                {data.map(data=><>
+                {data && data.map(data=><>
             <div className={styles.userTrans}>
                 <div className={styles.userInfo}>
                     <Image src={data && `${process.env.CLOUDINARY_URL}/${data.image}` ? `${process.env.CLOUDINARY_URL}/${data.image}` : blank  } alt="profile" height={50} width={50} />
