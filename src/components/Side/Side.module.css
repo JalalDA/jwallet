@@ -46,3 +46,19 @@
 .logout > p{
     margin-left: 26px;
 }
+
+@media screen and (max-width:768px) {
+    .sideContainer{
+        transform: translateX(-250%);
+        transition: all 1s ease-in-out;
+        width: 50%;
+        position: absolute;
+        z-index: 5;
+        top: 120px;
+        left: 20px;
+        margin: 0;
+    }
+    .sideContainer.show{
+        transform: translateX(0);
+    }
+}

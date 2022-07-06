@@ -23,3 +23,36 @@
 .imgProfile{
     cursor: pointer;
 }
+.toggle{
+    display: none;
+}
+
+@media screen and (max-width : 768px) {
+    .headerContainer{
+        padding: 20px;
+    }
+    .toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 10px;
+        padding: 5px;
+    }
+    .toggle>span{
+        height: 8px;
+        width: 40px;
+        border-radius: 5px;
+        background-color: #6379f4;
+    }
+    .toggle:hover{
+        border: 1px solid #6379f4;
+        border-radius: 20%;
+    }
+    .profile{
+        width: 30%;
+    }
+    .profileImg{
+        border-radius: 50%;
+    }
+}

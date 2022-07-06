@@ -302,3 +302,14 @@
     margin-top: 70px;
     cursor: pointer;
 }
+.profileImg{
+    border-radius: 20%;
+}
+
+@media screen and (max-width : 768px){
+    .container{
+        margin: 30px;
+        margin-left: 30px;
+        width: 90%;
+    }
+}

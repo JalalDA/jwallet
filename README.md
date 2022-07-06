@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+<h1>J-Wallet</h1>
+<p>J-Wallet is some payment App that make you easy to pay something</p>
+<p>Build with next Js and love</p>
+<br>
+</div>
 
-## Getting Started
+## BUILT WITH
 
-First, run the development server:
+![html](https://img.shields.io/badge/html-5-orange)
+![css](https://img.shields.io/badge/css-3-blue)
+![bootstrap](https://img.shields.io/badge/bootstrap-5-lightgrey)
+![reactjs](https://img.shields.io/badge/reactjs-18-blue)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![nodejs](https://img.shields.io/badge/nodejs-18-brightgreen)
+![expressjs](https://img.shields.io/badge/expressjs-4-lightgrey)
+![postgreSQL](https://img.shields.io/badge/postgreSQL-14-blue)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## HOW TO USE
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. Clone this repository.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+   ```
+   $ git clone https://github.com/JalalDA/jwallet
 
-## Learn More
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Open VS Code or you can download and install it [here](https://code.visualstudio.com/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Open menu **Terminal > New Terminal** or press **ctrl+shift+`**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. On terminal, change directory to **jwallet** then run
 
-## Deploy on Vercel
+   ```
+   $ npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. Enjoy the app!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## PREVIEW
+
+<div style="display:flex" >
+<img src="src/assets/img/preview_home.jpeg" style="width: 250px">
+<img src="src/assets/img/preview_login.jpeg" style="width: 250px">
+<img src="src/assets/img/preview_profile.jpeg" style="width: 250px">
+</div>
+<div style="display:flex">
+<img src="src/assets/img/preview_product.jpeg" style="width: 300px">
+<img src="src/assets/img/preview_detail_product.jpeg" style="width: 300px">
+</div>

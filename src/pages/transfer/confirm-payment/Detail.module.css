@@ -97,3 +97,11 @@
 .continue:hover{
     background-color: #95a2ee;
 }
+
+@media screen and (max-width : 768px){
+    .container{
+        margin: 30px;
+        margin-left: 30px;
+        width: 90%;
+    }
+}

@@ -66,7 +66,7 @@ const Profile = () => {
         }} logout={logout}/>
     <div className={styles.container}>
         <div className={styles.profileInfo}>
-        <Image src={previewImg !== null ? previewImg : userInfo && userInfo.image !== null ? `${process.env.CLOUDINARY_URL}/${userInfo.image}` : blank} width={'150px'} height={'150px'} alt="profileImage" />
+        <Image className={styles.profileImg} src={previewImg !== null ? previewImg : userInfo && userInfo.image !== null ? `${process.env.CLOUDINARY_URL}/${userInfo.image}` : blank} width={'150px'} height={'150px'} alt="profileImage" />
             <div className={styles.edit}>
                 <Image src={notes} alt="edit" height={10} width={10}/>
                 <input type="file" onChange={(e)=>{

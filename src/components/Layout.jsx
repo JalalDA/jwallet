@@ -12,6 +12,7 @@ const Layout = ({children, title}) => {
   const router = useRouter()
   const token = useSelector(state=>state.login.token)
   const[show, setShow] = useState(false)
+  const [showToggle, setShowToggle] = useState(false)
 
   useEffect(()=>{
     if(!token){
@@ -27,9 +28,9 @@ const Layout = ({children, title}) => {
       setShow(false)
       router.push('/auth/login')
     }}/>
-    <Header/>
+    <Header setShowToggle={setShowToggle} showToggle={showToggle}/>
     <div className={styles.dashboardContainer}>
-    <Side/>
+    <Side showToggle={showToggle}/>
     {children}
     </div>
     <Footer/>

@@ -6,12 +6,15 @@ import arrow from '../../assets/img/arrow-up.png'
 import user from '../../assets/img/userDash.png'
 import logout from '../../assets/img/log-out.png'
 import { useRouter } from 'next/router'
+// import { useState } from 'react'
 
 
-const Side = () => {
+const Side = (props) => {
   const router = useRouter()
+  // const [showToggle, setShowToggle] = useState(true)
+  console.log(props.showToggle);
   return (
-    <div className={styles.sideContainer}>
+    <div className={`${styles.sideContainer} ${props.showToggle ? styles.show : ""}`}>
       <div className={styles.menuSide}>
         <div className={styles.item} onClick={()=>{
           router.push('/dashboard')

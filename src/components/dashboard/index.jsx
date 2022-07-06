@@ -35,7 +35,7 @@ const Sidebar = () => {
         const getAllHistory = async ()=>{
             try {
                 const config = { headers: { Authorization: `Bearer ${token}`} }
-                const result = await axios.get(`${process.env.SERVER_HOST}/transaction/history?page=1&limit=5&filter=MONTH`, config)
+                const result = await axios.get(`${process.env.SERVER_HOST}/transaction/history?page=2&limit=5&filter=MONTH`, config)
                 console.log(result);
                 setData(result.data.data)
             } catch (error) {
@@ -88,31 +88,31 @@ const Sidebar = () => {
                 <div className={styles.chartInfo}>
                     <div className={styles.line}>
                         <span style={{height : dataIncome[6]} || 0}></span>
-                        <span>Sunday</span>
+                        <span>Sun</span>
                     </div>
                     <div className={styles.line}>
                         <span style={{height : dataIncome[0]} || 0}></span>
-                        <span>Monday</span>
+                        <span>Mon</span>
                     </div>
                     <div className={styles.line}>
                         <span style={{height : dataIncome[1]} || 0}></span>
-                        <span>Tuesday</span>
+                        <span>Tue</span>
                     </div>
                     <div className={styles.line}>
                         <span style={{height : dataIncome[2]} || 0}></span>
-                        <span>Wednesday</span>
+                        <span>Wed</span>
                     </div>
                     <div className={styles.line}>
                         <span style={{height : dataIncome[3]} || 0}></span>
-                        <span>Thursday</span>
+                        <span>Thurs</span>
                     </div>
                     <div className={styles.line}>
                         <span style={{height : 4}}></span>
-                        <span>Friday</span>
+                        <span>Fri</span>
                     </div>
                     <div className={styles.line}>
                         <span style={{height : dataIncome[5]} || 0}></span>
-                        <span>Saturday</span>
+                        <span>Sat</span>
                     </div>
                 </div>
             </div>
