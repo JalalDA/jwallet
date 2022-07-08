@@ -76,3 +76,10 @@
     margin-top: 90px;
     cursor: pointer;
 }
+
+@media screen and (max-width:768px){
+    .forgotContainer{
+        width: 100%;
+        padding: 100px 50px;
+    }
+}

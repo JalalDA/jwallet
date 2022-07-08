@@ -35,7 +35,9 @@ export default function Home() {
         <span>For Saving Time.</span>
         <span>We bring you a mobile app for banking problems that</span>
         <span> oftenly wasting much of your times.</span>
-        <div className={styles.btn_try}>Try It Free</div>
+        <div className={styles.btn_try} onClick={()=>{
+            router.push('/auth/signup', 'auth/signup')
+        }}>Try It Free</div>
       </div>
       </div>
       <div className={styles.features}>
@@ -66,7 +68,7 @@ export default function Home() {
       
       <section className={styles.wrapperPrice}>
           <div className={styles.priceTitle}>Rp. 390.736.500</div>
-          <div className={styles.priceBody}><div className={styles.why}>Money </div>has Been Transfered.</div>
+          <div className={styles.priceBody}>Money has Been Transfered.</div>
           <div className={styles.priceFooter}>That amount of money has been transfered from all users. We still counting and going strong!</div>
         </section>
         <section className={styles.wrapperFeatureTwo}>

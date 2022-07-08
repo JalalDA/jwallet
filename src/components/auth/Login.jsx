@@ -79,7 +79,7 @@ const Login = (props) => {
                   </div>
               </div>
               <span onClick={()=>{
-                router.push('/auth/reset-password', 'auth/reset-password')
+                router.push('/auth/reset-password')
               }}>Forgot Password?</span>
               <div className={styles.signUpButton} onClick={login}>Login</div>
             </div>

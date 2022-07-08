@@ -310,8 +310,15 @@
 
 @media screen and (max-width:768px) {
   .auth{
-    width: 50%;
+    width: 100%;
     align-items: center;
     padding: 0;
+  }
+  .header{
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .hero>span:nth-child(1){
+    font-size: 50px;
   }
 }

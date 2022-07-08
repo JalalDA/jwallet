@@ -84,3 +84,12 @@
     color: #6379F4;
     cursor: pointer;
 }
+
+@media screen and (max-width:768px){
+    .signUpContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+    }
+}

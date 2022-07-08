@@ -8,3 +8,9 @@
 .signUpTittle{
     display: flex;
 }
+
+@media screen and (max-width:768px){
+    .authContainer{
+        flex-direction: column;
+    }
+}
