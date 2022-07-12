@@ -13,9 +13,9 @@ const getDashboardReducer = (state = initialState, action)=>{
         case getDashboardStr + getDashboardPending :
         return {...state, isLoading : true}
         case  getDashboardStr + getDashboardSucces :
-        return {...state, isSucces : true, dashboardInfo : action.payload.data.data, msg : action.payload.data.msg}
+        return {...state, isSucces : true, dashboardInfo : action && action.payload.data.data, msg : action && action.payload.data.msg}
         case getDashboardStr + getDashboardSucces :
-        return {...state, isLoading : false, isSucces : false, msg : action.payload.response.data.msg}
+        return {...state, isLoading : false, isSucces : false, msg : action && action.payload.response.data.msg}
         default:
         return state
     }

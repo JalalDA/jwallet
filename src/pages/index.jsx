@@ -65,7 +65,6 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.group}><Image src={group} alt='support'/></div>
-      
       <section className={styles.wrapperPrice}>
           <div className={styles.priceTitle}>Rp. 390.736.500</div>
           <div className={styles.priceBody}>Money has Been Transfered.</div>
@@ -93,7 +92,7 @@ export default function Home() {
         </section>
         <section className={styles.wrapperUser}>
           <div className={styles.userHeader}>
-            <div className={styles.userTitle}>What Users are <div className={styles.why}>Saying.</div></div>
+            <div className={styles.userTitle}>What Users Saying are</div>
             <div className={styles.userBody}>We have some great features from the application and it’s totally free to use by all users around the world.</div>
             <div className={styles.wrapperCard}>
               <div className={styles.arrowIcon}>
@@ -122,7 +121,7 @@ export default function Home() {
         </aside>
         <div className={styles.wrapperFooterEnd}>
           <div className={styles.year}>2020 FazzPay. All right reserved.</div>
-          <div className={styles.contactNumber}>+62 5637 8882 9901</div>
+          <div className={styles.contactNumber}>+62 813 1580 5251</div>
           <div className={styles.contactEmail}>contact@fazzpay.com</div>
         </div>
       </footer>
